@@ -270,16 +270,16 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-4 pt-20">
-        <p className="font-serif italic text-lg md:text-2xl font-light tracking-wide text-gray-200 mb-4 animate-fade-in-up">
+        <span className="text-xs md:text-sm font-medium tracking-[0.3em] uppercase mb-4 animate-fade-in-up">
           New Collection
-        </p>
+        </span>
 
         <h1 className="font-serif text-7xl md:text-9xl font-black tracking-tight mb-2 leading-none drop-shadow-2xl">
           DROP 01
         </h1>
 
-        <p className="font-serif italic text-lg md:text-2xl font-light tracking-wide text-gray-200 mb-10">
-          Where ease satisfies achievement
+        <p className="font-sans text-lg md:text-2xl font-light tracking-wide text-gray-200 mb-10">
+          where ease meets empowerment
         </p>
 
         <div className="flex flex-col md:flex-row gap-4 w-full max-w-md md:max-w-none justify-center">
