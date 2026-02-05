@@ -279,7 +279,7 @@ const Hero = () => {
         </h1>
 
         <p className="font-sans text-lg md:text-2xl font-light tracking-wide text-gray-200 mb-10">
-          where ease meets empowerment
+          Where Ease Meets Empowerment
         </p>
 
         <div className="flex flex-col md:flex-row gap-4 w-full max-w-md md:max-w-none justify-center">
