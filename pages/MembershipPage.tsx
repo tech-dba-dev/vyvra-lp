@@ -112,8 +112,6 @@ const COMMUNITY_URL = "https://login.circle.so/sign_up?request_host=members.vyvr
 
 export default function MembershipPage() {
   const [visible, setVisible] = useState(false);
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     requestAnimationFrame(() => setVisible(true));
@@ -136,28 +134,6 @@ export default function MembershipPage() {
     }
 
     window.location.href = COMMUNITY_URL;
-  };
-
-  const handleEmailSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-
-    // Fire GA4 event
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'Email_Capture', {
-        event_category: 'Membership',
-        event_label: 'waitlist_signup',
-      });
-    }
-
-    // Fire Meta Pixel event
-    if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'Lead', {
-        content_name: 'waitlist_email_capture',
-      });
-    }
-
-    setSubmitted(true);
   };
 
   const animStyle = (delay: number) => ({
@@ -260,43 +236,14 @@ export default function MembershipPage() {
             Be the first to access our upcoming training content, community updates and early membership opportunities.
           </p>
 
-          {/* Email capture form */}
+          {/* Join Community CTA Button */}
           <div
             className="w-full max-w-sm mx-auto transition-all duration-700"
             style={animStyle(900)}
           >
-            {!submitted ? (
-              <form onSubmit={handleEmailSubmit} className="flex flex-col gap-3">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  className="w-full py-3.5 px-5 bg-white/5 border border-brand-accent/20 rounded-full text-brand-beige text-sm md:text-base placeholder:text-brand-beige/40 focus:outline-none focus:border-brand-accent/60 transition-colors duration-300"
-                />
-                <button
-                  type="submit"
-                  className="w-full py-3.5 px-8 bg-brand-accent text-brand-dark rounded-full text-sm md:text-base font-semibold uppercase tracking-widest hover:opacity-90 hover:scale-[1.02] transition-all duration-300 shadow-lg"
-                >
-                  Stay Connected
-                </button>
-              </form>
-            ) : (
-              <div className="py-4 text-brand-accent font-sans text-sm md:text-base font-medium">
-                You're in! We'll keep you updated.
-              </div>
-            )}
-          </div>
-
-          {/* Join Community CTA Button */}
-          <div
-            className="w-full max-w-sm mx-auto mt-4 transition-all duration-700"
-            style={animStyle(950)}
-          >
             <button
               onClick={handleJoinCommunity}
-              className="w-full py-3.5 px-8 bg-transparent border-2 border-brand-accent text-brand-accent rounded-full text-sm md:text-base font-semibold uppercase tracking-widest hover:bg-brand-accent hover:text-brand-dark transition-all duration-300"
+              className="w-full py-4 px-8 bg-brand-accent text-brand-dark rounded-full text-sm md:text-base font-semibold uppercase tracking-widest hover:opacity-90 hover:scale-[1.02] transition-all duration-300 shadow-lg"
             >
               Join the Community
             </button>
