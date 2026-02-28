@@ -9,8 +9,8 @@ interface SizeData {
 
 const SIZE_GUIDES: SizeData[] = [
   {
-    name: 'Ref Shorts',
-    slug: 'ref-shorts',
+    name: 'Classic Motion Short',
+    slug: 'classic-motion-short',
     headers: ['Measurement (cm)', 'XS', 'S', 'M', 'L', 'XL'],
     rows: [
       ['Waist (half)', '28', '30', '32', '34', '36'],
