@@ -151,7 +151,7 @@ export default function MembershipPage() {
       <div className="absolute bottom-0 left-0 w-48 h-48 md:w-72 md:h-72 bg-brand-primary/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-brand-primary/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-lg mx-auto px-6 py-12 md:py-20 flex flex-col items-center">
+      <div className="relative z-10 w-full max-w-2xl mx-auto px-6 py-12 md:py-20 flex flex-col items-center">
 
         {/* Logo */}
         <div
@@ -164,21 +164,37 @@ export default function MembershipPage() {
         </div>
 
         {/* ── SECTION 1: Gratitude + Context ── */}
-        <section className="w-full text-center mb-14 md:mb-20">
-          <h1
-            className="font-serif text-2xl md:text-4xl font-bold text-brand-beige tracking-tight mb-4 md:mb-6 transition-all duration-700"
-            style={animStyle(150)}
-          >
-            Thank you for being part of Vyvra.
-          </h1>
-          <p
-            className="font-sans text-sm md:text-base font-light text-brand-beige/80 leading-relaxed max-w-md mx-auto transition-all duration-700"
-            style={animStyle(300)}
-          >
-            We're grateful you chose Vyvra.
-            <br />
-            Your towel is a small gesture from us — a symbol of consistency, movement and the start of something bigger.
-          </p>
+        <section className="w-full mb-14 md:mb-20">
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            {/* Text */}
+            <div className="flex-1 text-center md:text-left">
+              <h1
+                className="font-serif text-2xl md:text-4xl font-bold text-brand-beige tracking-tight mb-4 md:mb-6 transition-all duration-700"
+                style={animStyle(150)}
+              >
+                Thank you for being part of Vyvra.
+              </h1>
+              <p
+                className="font-sans text-sm md:text-base font-light text-brand-beige/80 leading-relaxed transition-all duration-700"
+                style={animStyle(300)}
+              >
+                We're grateful you chose Vyvra.
+                <br />
+                Your towel is a small gesture from us — a symbol of consistency, movement and the start of something bigger.
+              </p>
+            </div>
+            {/* Towel image */}
+            <div
+              className="flex-shrink-0 transition-all duration-700"
+              style={animStyle(350)}
+            >
+              <img
+                src="/toalha.png"
+                alt="Vyvra towel"
+                className="w-48 md:w-56 drop-shadow-2xl"
+              />
+            </div>
+          </div>
         </section>
 
         {/* Divider */}
