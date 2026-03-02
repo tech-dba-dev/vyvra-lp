@@ -158,7 +158,7 @@ const SIZE_GUIDES: SizeData[] = [
   },
 ];
 
-function SizeTable({ data }: { data: SizeData }) {
+function SizeTable({ data, key: _key, ...rest }: { data: SizeData; key?: string }) {
   return (
     <div className="mb-10">
       <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#2e0015] mb-4">
