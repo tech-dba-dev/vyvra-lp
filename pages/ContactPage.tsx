@@ -190,10 +190,23 @@ function ContactForm({ onSuccess }: { onSuccess: () => void }) {
     setSubmitError('');
 
     try {
+      // Convert files to base64 for the API
+      const filePayloads = await Promise.all(
+        files.map((f) => new Promise<{ name: string; type: string; data: string }>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const base64 = (reader.result as string).split(',')[1];
+            resolve({ name: f.name, type: f.type, data: base64 });
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(f);
+        }))
+      );
+
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, honeypot }),
+        body: JSON.stringify({ ...form, honeypot, files: filePayloads }),
       });
 
       const data = await res.json();

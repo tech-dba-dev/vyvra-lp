@@ -47,7 +47,7 @@ setInterval(() => {
 }, 30 * 60 * 1000);
 
 /* ─── Middleware ─── */
-app.use(express.json({ limit: '1mb' }));
+app.use(express.json({ limit: '20mb' }));
 
 /* ─── CORS for allowed origins ─── */
 app.use('/api', (req, res, next) => {
@@ -70,7 +70,7 @@ app.post('/api/contact', async (req, res) => {
     return;
   }
 
-  const { enquiryType, orderNumber, firstName, lastName, email, phone, address, message, honeypot } = req.body;
+  const { enquiryType, orderNumber, firstName, lastName, email, phone, address, message, honeypot, files } = req.body;
 
   // Honeypot check
   if (honeypot) {
@@ -90,10 +90,24 @@ app.post('/api/contact', async (req, res) => {
     return;
   }
 
+  // Validate and build attachments
+  const ALLOWED_MIME = ['image/jpeg', 'image/png', 'application/pdf'];
+  const MAX_FILE_SIZE = 5 * 1024 * 1024;
+  const attachments: { filename: string; content: Buffer }[] = [];
+
+  if (Array.isArray(files)) {
+    for (const f of files.slice(0, 3)) {
+      if (!f.name || !f.data || !ALLOWED_MIME.includes(f.type)) continue;
+      const buf = Buffer.from(f.data, 'base64');
+      if (buf.length > MAX_FILE_SIZE) continue;
+      attachments.push({ filename: f.name, content: buf });
+    }
+  }
+
   const fullName = `${firstName.trim()} ${lastName.trim()}`;
 
   try {
-    // 1) Email to support — full details
+    // 1) Email to support — full details + attachments
     await resend.emails.send({
       from: RESEND_FROM_EMAIL,
       to: [SUPPORT_EMAIL],
@@ -103,6 +117,7 @@ app.post('/api/contact', async (req, res) => {
         enquiryType, orderNumber, fullName, email: email.trim(),
         phone, address, message: message.trim(),
       }),
+      attachments,
     });
 
     // 2) Confirmation email to customer
