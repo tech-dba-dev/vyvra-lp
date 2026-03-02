@@ -3,6 +3,9 @@ import React from 'react';
 interface SizeData {
   name: string;
   slug: string;
+  bodyHeaders: string[];
+  bodyRows: string[][];
+  bodyTip: string;
   headers: string[];
   rows: string[][];
 }
@@ -11,6 +14,12 @@ const SIZE_GUIDES: SizeData[] = [
   {
     name: 'Classic Motion Short',
     slug: 'classic-motion-short',
+    bodyHeaders: ['', 'XS', 'S', 'M', 'L', 'XL'],
+    bodyRows: [
+      ['Waist', '63–67', '67–71', '71–75', '75–79', '79–83'],
+      ['Hip', '85–89', '89–93', '93–97', '97–101', '101–105'],
+    ],
+    bodyTip: 'Measure around your natural waistline and the fullest part of your hips.',
     headers: ['Measurement (cm)', 'XS', 'S', 'M', 'L', 'XL'],
     rows: [
       ['Waist (half)', '28', '30', '32', '34', '36'],
@@ -23,6 +32,12 @@ const SIZE_GUIDES: SizeData[] = [
   {
     name: 'Elevate V-Legging',
     slug: 'elevate-v-legging',
+    bodyHeaders: ['', 'XS', 'S', 'M', 'L', 'XL'],
+    bodyRows: [
+      ['Waist', '63–67', '67–71', '71–75', '75–79', '79–83'],
+      ['Hip', '85–89', '89–93', '93–97', '97–101', '101–105'],
+    ],
+    bodyTip: 'Measure around your natural waistline and the fullest part of your hips.',
     headers: ['Measurement (cm)', 'XS', 'S', 'M', 'L', 'XL'],
     rows: [
       ['Waist', '52', '56', '60', '64', '68'],
@@ -35,6 +50,12 @@ const SIZE_GUIDES: SizeData[] = [
   {
     name: 'Core Flow Legging',
     slug: 'core-flow-legging',
+    bodyHeaders: ['', 'XS', 'S', 'M', 'L', 'XL'],
+    bodyRows: [
+      ['Waist', '65–69', '69–73', '73–77', '77–81', '81–85'],
+      ['Hip', '87–91', '91–95', '95–99', '99–103', '103–107'],
+    ],
+    bodyTip: 'Measure around your natural waistline and the fullest part of your hips.',
     headers: ['Measurement (cm)', 'XS', 'S', 'M', 'L', 'XL'],
     rows: [
       ['Waist', '54', '58', '62', '66', '70'],
@@ -47,6 +68,12 @@ const SIZE_GUIDES: SizeData[] = [
   {
     name: 'Pulse Bra',
     slug: 'pulse-bra',
+    bodyHeaders: ['', 'XS', 'S', 'M', 'L', 'XL'],
+    bodyRows: [
+      ['Bust', '75–79', '79–83', '83–87', '87–91', '91–95'],
+      ['Underbust', '63–67', '67–71', '71–75', '75–79', '79–83'],
+    ],
+    bodyTip: 'Measure around the fullest part of your bust and directly under your bust.',
     headers: ['Measurement (cm)', 'XS', 'S', 'M', 'L', 'XL'],
     rows: [
       ['Bust', '62', '66', '70', '74', '78'],
@@ -58,6 +85,12 @@ const SIZE_GUIDES: SizeData[] = [
   {
     name: 'Edge Bra',
     slug: 'edge-bra',
+    bodyHeaders: ['', 'XS', 'S', 'M', 'L', 'XL'],
+    bodyRows: [
+      ['Bust', '75–79', '79–83', '83–87', '87–91', '91–95'],
+      ['Underbust', '63–67', '67–71', '71–75', '75–79', '79–83'],
+    ],
+    bodyTip: 'Measure around the fullest part of your bust and directly under your bust.',
     headers: ['Measurement (cm)', 'XS', 'S', 'M', 'L', 'XL'],
     rows: [
       ['Half Bust', '33', '35', '37', '39', '41'],
@@ -69,6 +102,12 @@ const SIZE_GUIDES: SizeData[] = [
   {
     name: 'Layer Tee',
     slug: 'layer-tee',
+    bodyHeaders: ['', 'XS', 'S', 'M', 'L', 'XL'],
+    bodyRows: [
+      ['Bust', '79–83', '83–87', '87–91', '91–95', '95–99'],
+      ['Waist', '65–69', '69–73', '73–77', '77–81', '81–85'],
+    ],
+    bodyTip: 'Measure around the fullest part of your bust and your natural waistline.',
     headers: ['Measurement (cm)', 'XS', 'S', 'M', 'L', 'XL'],
     rows: [
       ['Bust', '70', '74', '78', '82', '86'],
@@ -82,6 +121,12 @@ const SIZE_GUIDES: SizeData[] = [
   {
     name: 'Flow Dress',
     slug: 'flow-dress',
+    bodyHeaders: ['', 'XS', 'S', 'M', 'L', 'XL'],
+    bodyRows: [
+      ['Bust', '79–83', '83–87', '87–91', '91–95', '95–99'],
+      ['Waist', '63–67', '67–71', '71–75', '75–79', '79–83'],
+    ],
+    bodyTip: 'Measure around the fullest part of your bust and your natural waistline.',
     headers: ['Measurement (cm)', 'XS', 'S', 'M', 'L', 'XL'],
     rows: [
       ['Total Length', '78', '80', '82', '84', '86'],
@@ -95,6 +140,12 @@ const SIZE_GUIDES: SizeData[] = [
   {
     name: 'Athletic Long Sleeve Tank Crop Top',
     slug: 'athletic-long-sleeve',
+    bodyHeaders: ['', 'XS', 'S', 'M', 'L', 'XL'],
+    bodyRows: [
+      ['Bust', '79–83', '83–87', '87–91', '91–95', '95–99'],
+      ['Waist', '65–69', '69–73', '73–77', '77–81', '81–85'],
+    ],
+    bodyTip: 'Measure around the fullest part of your bust and your natural waistline.',
     headers: ['Measurement (cm)', 'XS', 'S', 'M', 'L', 'XL'],
     rows: [
       ['Bust', '70', '74', '78', '82', '86'],
@@ -107,12 +158,55 @@ const SIZE_GUIDES: SizeData[] = [
   },
 ];
 
-function SizeTable({ data, key: _key, ...rest }: { data: SizeData; key?: string }) {
+function SizeTable({ data }: { data: SizeData }) {
   return (
-    <div className="mb-8">
-      <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#2e0015] mb-3">
+    <div className="mb-10">
+      <h3 className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#2e0015] mb-4">
         {data.name}
       </h3>
+
+      {/* Body Measurements */}
+      <h4 className="text-[10px] sm:text-xs uppercase tracking-wide text-gray-500 mb-1.5">
+        Find Your Size — Body Measurements (cm)
+      </h4>
+      <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+        <table className="w-full min-w-[360px] border-collapse text-xs sm:text-sm">
+          <thead>
+            <tr>
+              {data.bodyHeaders.map((h, i) => (
+                <th
+                  key={i}
+                  className="bg-[#2e0015] text-white py-2.5 px-2 sm:px-3 text-center font-medium tracking-wide first:text-left"
+                >
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {data.bodyRows.map((row, i) => (
+              <tr key={i} className="hover:bg-[#faf7f6] transition-colors">
+                {row.map((cell, j) => (
+                  <td
+                    key={j}
+                    className={`py-2.5 px-2 sm:px-3 border-b border-[#ebebeb] ${j === 0 ? 'text-left font-medium' : 'text-center'}`}
+                  >
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="text-[10px] sm:text-[11px] text-gray-400 mt-1.5 italic">
+        {data.bodyTip}
+      </p>
+
+      {/* Garment Measurements */}
+      <h4 className="text-[10px] sm:text-xs uppercase tracking-wide text-gray-500 mt-4 mb-1.5">
+        Garment Measurements (cm)
+      </h4>
       <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
         <table className="w-full min-w-[360px] border-collapse text-xs sm:text-sm">
           <thead>
