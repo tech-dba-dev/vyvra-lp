@@ -179,20 +179,37 @@ function ContactForm({ onSuccess }: { onSuccess: () => void }) {
     return e;
   };
 
+  const [submitError, setSubmitError] = useState('');
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (honeypot) return;
     const errs = validate();
     if (Object.keys(errs).length > 0) { setErrors(errs); return; }
     setSubmitting(true);
+    setSubmitError('');
 
-    // TODO: integrate with Resend API for email delivery
-    // For now, log and show success
-    console.log('Contact form submitted:', { ...form, files: files.map((f) => f.name) });
-    await new Promise((r) => setTimeout(r, 800));
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, honeypot }),
+      });
 
-    setSubmitting(false);
-    onSuccess();
+      const data = await res.json();
+
+      if (!res.ok) {
+        setSubmitError(data.error || 'Something went wrong. Please try again.');
+        setSubmitting(false);
+        return;
+      }
+
+      setSubmitting(false);
+      onSuccess();
+    } catch {
+      setSubmitError('Unable to send your message. Please check your connection and try again.');
+      setSubmitting(false);
+    }
   };
 
   const getStyle = (field: keyof FormData) => errors[field] ? inputError : inputBase;
@@ -307,6 +324,17 @@ function ContactForm({ onSuccess }: { onSuccess: () => void }) {
           <p style={{ fontSize: '0.75rem', color: '#999', marginTop: 6 }}>Accepted: JPG, PNG, PDF</p>
           {fileError && <FieldError msg={fileError} />}
         </div>
+
+        {/* Submit Error */}
+        {submitError && (
+          <div style={{
+            padding: '12px 16px', marginBottom: 16, borderRadius: 4,
+            background: `${C.error}10`, border: `1px solid ${C.error}30`,
+            color: C.error, fontSize: '0.875rem',
+          }}>
+            {submitError}
+          </div>
+        )}
 
         {/* Submit */}
         <button
