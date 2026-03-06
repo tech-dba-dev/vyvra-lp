@@ -233,15 +233,12 @@ const Hero = () => {
           Where Ease Meets Empowerment
         </p>
 
-        <div className="flex flex-col md:flex-row gap-4 w-full max-w-md md:max-w-none justify-center">
+        <div className="flex justify-center">
           <button
             onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
             className="px-8 py-4 border border-white/30 rounded-full text-xs font-bold tracking-[0.15em] uppercase hover:bg-white/10 transition-colors backdrop-blur-sm"
           >
             Explore Collection
-          </button>
-          <button className="px-8 py-4 bg-brand-accent text-brand-dark rounded-full text-xs font-bold tracking-[0.15em] uppercase hover:bg-white transition-colors shadow-lg hover:shadow-xl hover:-translate-y-1 transform duration-300">
-            Shop Drop 01
           </button>
         </div>
 
